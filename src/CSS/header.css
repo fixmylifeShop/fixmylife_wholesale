@@ -1,0 +1,183 @@
+.App-logo {
+  height: 70px;
+  /* pointer-events: none; */
+  margin: auto;
+}
+
+.App-header {
+  background-color: white;
+  width: 100%;
+  height: 130px;
+  /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+  align-items: center;
+  /* align-content: stretch; */
+  font-size: 13px;
+  color: white;
+  position: fixed;
+  border-bottom: 2px solid #eeeeee;
+  z-index: 5;
+}
+.navigation {
+  height: 100%;
+  margin: auto;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.navContentWidth {
+  width: 31%;
+  /* position: relative; */
+}
+
+.navLinkContainer {
+  display: flex;
+  height: 30px;
+  align-items: center;
+}
+
+.navLinks {
+  /* margin:0; */
+  text-decoration: none;
+  color: #222222;
+  margin-right: 20px;
+}
+
+.App-link {
+  text-decoration: none;
+  color: #222222;
+  background: white;
+  padding-left: 20px;
+  z-index: 3;
+  display: flex;
+  height: 30px;
+  align-items: center;
+}
+
+.navLeftContent {
+  text-align: right;
+  justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  height: 30px;
+}
+
+.searchContainer {
+  display: flex;
+}
+.searchButton {
+  z-index: 3;
+  background: white;
+  color: black;
+}
+.searchButton {
+  cursor: pointer;
+}
+.mobileNavMenu {
+  display: none;
+}
+@media only screen and (max-width: 800px) {
+  .navigation {
+    width: 100%;
+    margin: 0;
+  }
+  .navLinkContainer {
+    display: none;
+  }
+  .navLeftContent {
+    display: none;
+  }
+  .navContentWidth {
+    margin: auto;
+  }
+  .mobileNavMenu {
+    display: block;
+    left: 0px;
+    /* justify-self: flex-end; */
+    position: fixed;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .App-header {
+    height: 80px;
+  }
+  .navContentWidth {
+    /* width: 70px; */
+    height: 50px;
+  }
+  .navContentWidth a {
+    /* width: 100%; */
+    height: 100%;
+  }
+  .navContentWidth a img {
+    /* width: 100%; */
+    height: 100%;
+  }
+}
+
+/* search bar --------------------------------- */
+.inputSearch {
+  outline: none;
+  z-index: 1;
+  text-align: left;
+  width: 100px;
+  position: absolute;
+  margin: auto 0;
+  border: none;
+  color: black;
+  right: 40px;
+  margin-right: 0px;
+  align-self: center;
+  background: white;
+  opacity: 0;
+}
+::-webkit-input-placeholder {
+  color: black;
+  font-weight: bold;
+}
+.hide {
+  opacity: 0;
+  /* -webkit-transition: 10s; */
+  margin-right: 0px;
+  -webkit-transition: 2s;
+}
+.slideIn {
+  opacity: 100;
+  margin-right: 120px;
+  -webkit-transition: 0.3s;
+}
+
+.mobileOptions {
+  margin-top: 90px;
+  position: fixed;
+}
+
+.mobileBrand {
+  background: rgb(48, 48, 48);
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  color:white;
+  margin: auto;
+}
+@media only screen and (max-width: 800px) { 
+  .App-link{
+    padding-left:0;
+  }
+
+}
+@media only screen and (max-width: 670px) {
+  .mobileOptions {
+    width: 100%;
+    margin-top: 65px;
+    position: fixed;
+  }
+
+}

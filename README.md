@@ -1,2 +1,1 @@
-# fixmylife_wholesale
-wholesale ecom shop
+# fixmylife-frontend
