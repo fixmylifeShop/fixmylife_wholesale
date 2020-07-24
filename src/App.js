@@ -36,6 +36,17 @@ function App() {
       .catch((err) => console.log(err));
   }
 
+  const getCart = () => {
+    axiosWithAuth()
+      .get("/cart/")
+      .then((res) => {
+        setCart(res.data.cart);
+        console.log(res.data);
+        getTotal(res.data.cart);
+      })
+      .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
     axiosViewsSession();
@@ -57,17 +68,6 @@ function App() {
       subtotal = subtotal + itemTotal;
     });
     setCartInfo({ subtotal, itemsCount });
-  };
-
-  const getCart = () => {
-    axiosWithAuth()
-      .get("/cart/")
-      .then((res) => {
-        setCart(res.data.cart);
-        console.log(res.data);
-        getTotal(res.data.cart);
-      })
-      .catch((err) => console.log(err));
   };
 
   const addToCart = (update, push) => {
@@ -96,11 +96,19 @@ function App() {
       <Route
         exact
         path="/products"
-        component={() => <ProductsPage products={products} addToCart={addToCart}/>}
+        component={() => (
+          <ProductsPage products={products} addToCart={addToCart} />
+        )}
       />
       <Route
         path="/search"
-        component={() => <ProductsPage products={products} search={search} addToCart={addToCart}/>}
+        component={() => (
+          <ProductsPage
+            products={products}
+            search={search}
+            addToCart={addToCart}
+          />
+        )}
       />
       <Route
         exact
