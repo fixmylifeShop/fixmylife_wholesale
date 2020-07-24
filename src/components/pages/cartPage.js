@@ -48,7 +48,7 @@ export default function CartPage(props) {
       if (count <= 0) {
         deleteItem(id);
       } else {
-        props.cart.map((item) => {
+        props.cart.forEach((item) => {
           if (item.id === id) {
             item.quantity = num;
           }
