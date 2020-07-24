@@ -21,10 +21,10 @@ export default function ContactPage() {
   const send = (e) => {
     e.preventDefault();
     if (
-      contactForm.name == "" ||
-      contactForm.email == "" ||
-      contactForm.subject == "" ||
-      contactForm.message == ""
+      contactForm.name === "" ||
+      contactForm.email === "" ||
+      contactForm.subject === "" ||
+      contactForm.message === ""
     ) {
       window.scrollTo(0, 0);
       setError(true);
