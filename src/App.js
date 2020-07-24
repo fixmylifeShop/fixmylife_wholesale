@@ -8,6 +8,7 @@ import {
   axiosWithAuth,
   axiosViewsSession,
 } from "./components/config/axiosConfig";
+import AuthenticationPage from "./components/auth/authenticationPage";
 import {
   ContactPage,
   IndividualProductPage,
@@ -16,6 +17,8 @@ import {
   Homepage,
   InstagramPage,
 } from "./components/pages";
+import PrivateRoute from './components/config/privateRoute'
+// import PageRouter from "./components/pageRouter";
 
 function App() {
   const [products, setProducts] = useState(false);
@@ -50,7 +53,14 @@ function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
     axiosViewsSession();
-    getCart();
+    axiosWithAuth()
+      .get("/cart/")
+      .then((res) => {
+        setCart(res.data.cart);
+        console.log(res.data);
+        getTotal(res.data.cart);
+      })
+      .catch((err) => console.log(err));
     // getTotal(cart);
   }, [pathname]);
 
@@ -87,13 +97,31 @@ function App() {
 
   return (
     <div className="App">
-      <Header cartInfo={cartInfo} setSearch={setSearch} />
-      <Route
+      <PrivateRoute
+        exact
+        path="/"
+        component={() => <Header cartInfo={cartInfo} setSearch={setSearch} />} />
+      {/* <Route
+        exact
+        path="/"
+        component={() => (
+          <PageRouter
+            products={products}
+            addToCart={addToCart}
+            cart={cart}
+            search={search}
+            cartInfo={cartInfo}
+            setCart= {setCart}
+          />
+        )}
+      /> */}
+      <Route path="/auth" component={AuthenticationPage} />
+      <PrivateRoute
         exact
         path="/"
         component={() => <Homepage products={products} addToCart={addToCart} />}
       />
-      <Route
+      <PrivateRoute
         exact
         path="/products"
         component={() => (
@@ -110,7 +138,7 @@ function App() {
           />
         )}
       />
-      <Route
+      <PrivateRoute
         exact
         path="/cart"
         component={() => (
@@ -122,7 +150,7 @@ function App() {
           />
         )}
       />
-      <Route
+      <PrivateRoute
         path="/product/:id"
         component={() => (
           <IndividualProductPage
