@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Banner from "../banner.js";
-import axios from "axios";
+import {axiosWithoutAuth} from '../config/axiosConfig.js'
 
 export default function ContactPage() {
   const [contactForm, setContactForm] = useState({
@@ -29,9 +29,9 @@ export default function ContactPage() {
       window.scrollTo(0, 0);
       setError(true);
     } else {
-      axios
+      axiosWithoutAuth()
         .post(
-          `https://fixmylife-next-api.herokuapp.com/api/mailer/`,
+          `${process.env.REACT_APP_DOMAIN_NAME}/mailer/`,
           contactForm
         )
         .then(

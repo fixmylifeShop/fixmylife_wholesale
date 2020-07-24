@@ -6,7 +6,7 @@ export default function ProductsPage(props) {
   return (
     <div>
       <Banner title="PRODUCTS"/>
-      <Products products={props.products} search={props.search}/>
+      <Products products={props.products} search={props.search} addToCart={props.addToCart}/>
     </div>
   );
 }

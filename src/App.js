@@ -91,16 +91,16 @@ function App() {
       <Route
         exact
         path="/"
-        component={() => <Homepage products={products} />}
+        component={() => <Homepage products={products} addToCart={addToCart} />}
       />
       <Route
         exact
         path="/products"
-        component={() => <ProductsPage products={products} />}
+        component={() => <ProductsPage products={products} addToCart={addToCart}/>}
       />
       <Route
         path="/search"
-        component={() => <ProductsPage products={products} search={search} />}
+        component={() => <ProductsPage products={products} search={search} addToCart={addToCart}/>}
       />
       <Route
         exact
